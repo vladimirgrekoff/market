@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,17 +22,18 @@ public class OrdersService {
     private final CartServiceIntegration cartServiceIntegration;
     private final AuthServiceIntegration authServiceIntegration;
 
-
+    public List<Order> findUserOrders(String username) {
+        return ordersRepository.findAllByUsername(username);
+    }
     @Transactional
     public void createOrder(String username) {
         UserDto userDto = authServiceIntegration.getCurrentUserInfo(username);
         CartDto cartDto = cartServiceIntegration.getCurrentCart(username);
         Order order = new Order();
 
-        order.setUser_id(userDto.getId());
+        order.setUsername(username);
         order.setTotalPrice(cartDto.getTotalPrice());
-        order.setEmail(userDto.getEmail());
-        order.setOrderItem(cartDto.getItems().stream().map(
+        order.setOrderItems(cartDto.getItems().stream().map(
                 cartItem -> new OrderItem(
                         productsService.findById(cartItem.getProductId()).get(),
                         order,

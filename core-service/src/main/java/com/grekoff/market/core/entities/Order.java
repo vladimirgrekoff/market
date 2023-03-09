@@ -22,17 +22,14 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long user_id;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
-    private List<OrderItem> orderItem;
-
-    @Column(name = "email")
-    private String email;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
 
     @CreationTimestamp
     @Column(name = "created_at")

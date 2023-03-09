@@ -1,0 +1,38 @@
+<div class="container" ng-controller="ordersController">
+    <p></p>
+    <h3>Заказы</h3>
+    <table class="table" cellpadding="0" cellspacing="0" width="80%" align="center">
+        <td width="60%">
+            <table align="center">
+                <tr>
+                    <td><b>Перейти:</b></td>
+                    <td width="30%">
+                        <button type="button" class="btn btn-outline-info btn-sm" style="width: 100%;" ng-click="showNavigationPage()">К выбору товаров</button>
+                    </td>
+                    <td width="30%">
+                        <button type="button" class="btn btn-outline-info btn-sm" style="width: 100%;" ng-click="showNavigationPage()">Страница навигации</button>
+                    </td>
+                    <td width="30%">
+                        <!--                            <button type="button" class="btn btn-outline-danger btn-sm" style="width: 100%;" onclick="location.href = 'logout'">Выход</button>-->
+                        <button type="button" class="btn btn-outline-danger btn-sm" style="width: 100%;" ng-click="tryLogout()">Выход</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </table>
+    <p></p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>ID Заказа</td>
+            <td>Цена</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="o in orders">
+            <td>{{o.id}}</td>
+            <td>{{o.totalPrice}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

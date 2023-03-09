@@ -21,6 +21,10 @@ app.controller("navigationController", function($rootScope, $scope, $http, $loca
         $location.path('cart');
     };
 
+    $scope.showOrdersPage = function () {
+        $location.path('orders');
+    };
+
     $scope.showProductsPage = function () {
         $location.path('products');
     };

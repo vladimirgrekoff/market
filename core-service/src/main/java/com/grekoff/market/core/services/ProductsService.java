@@ -121,7 +121,7 @@ public class ProductsService {
 
 
 
-    @jakarta.transaction.Transactional
+    @Transactional
     public void update(ProductDto productDto) {
         Product product = productsRepository.findById(productDto.getId()).orElseThrow(()-> new ResourceNotFoundException("Продукт отсутствует в списке, id: " + productDto.getId()));
         product.setPrice(productDto.getPrice());

@@ -3,55 +3,62 @@ var app = angular.module('market', ['ngRoute', 'ngStorage'])
 
     $routeProvider.when('/welcome',
     {
-    templateUrl:'welcomeTemplate.html',
+    templateUrl:'welcome/welcomeTemplate.html',
     controller:'welcomeController',
     controllerAs:'welcome'
     })
     .when('/login',
     {
-    templateUrl:'loginTemplate.html',
+    templateUrl:'login/loginTemplate.html',
     controller:'loginController',
     controllerAs:'login'
     })
     .when('/registration',
     {
-    templateUrl:'registrationTemplate.html',
+    templateUrl:'registration/registrationTemplate.html',
     controller:'registrationController',
     controllerAs:'registration'
     })
     .when('/authority',
     {
-    templateUrl:'authorityTemplate.html',
+    templateUrl:'authority/authorityTemplate.html',
     controller:'authorityController',
     controllerAs:'authority'
     })
     .when('/navigation',
     {
-    templateUrl:'navigationTemplate.html',
+    templateUrl:'navigation/navigationTemplate.html',
     controller:'navigationController',
     controllerAs:'navigation'
     })
     .when('/profile',
     {
-    templateUrl:'profileTemplate.html',
+    templateUrl:'profile/profileTemplate.html',
     controller:'profileController',
     controllerAs:'profile'
     })
     .when('/cart',
     {
-    templateUrl:'cartTemplate.html',
+    templateUrl:'cart/cartTemplate.html',
     controller:'cartController',
     controllerAs:'cart'
     })
+    .when('/orders',
+    {
+    templateUrl:'orders/ordersTemplate.html',
+    controller:'ordersController',
+    controllerAs:'orders'
+    })
+
     .when('/products',
     {
-    templateUrl:'productTemplate.html',
+    templateUrl:'product/productTemplate.html',
     controller:'productController',
     controllerAs:'products'
     })
     .when('/users',
     {
-    templateUrl:'usersTemplate.html',
+    templateUrl:'users/usersTemplate.html',
     controller:'usersController',
     controllerAs:'users'
     })

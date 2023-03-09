@@ -21,7 +21,9 @@ app.controller("cartController", function($rootScope, $scope, $http, $location, 
         $location.path('navigation');
     };
 
-
+    $scope.showOrdersPage = function () {
+        $location.path('orders');
+    };
 
     $scope.defaultNumber = 5;
 

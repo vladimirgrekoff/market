@@ -14,6 +14,10 @@
             <td><b>на страницу выбора товаров:</b></td>
             <td><button class="btn btn-primary" style="width: 100%;" ng-click="showCartPage()">Выбор товаров</button></td>
         </tr>
+        <tr ng-show="hasRole('ROLE_USER')">
+            <td><b>на страницу оформленных заказов:</b></td>
+            <td><button class="btn btn-primary" style="width: 100%;" ng-click="showOrdersPage()">Мои заказы</button></td>
+        </tr>
         <tr ng-show="hasRole('ROLE_MANAGER')">
             <td><b>на страницу редактирования списка товаров:</b></td>
             <td><button class="btn btn-primary" style="width: 100%;" ng-click="showProductsPage()">Правка списка</button></td>
