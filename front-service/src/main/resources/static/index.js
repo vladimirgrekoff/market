@@ -65,5 +65,4 @@ var app = angular.module('market', ['ngRoute', 'ngStorage'])
     .otherwise({
     redirectTo: 'welcome'
     });
-
 });

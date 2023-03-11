@@ -21,7 +21,6 @@ app.controller("loginController", function($rootScope, $scope, $http, $location,
         } catch (e) {
         }
 
-
         if ($localStorage.springWebUser) {
             $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.springWebUser.token;
         }

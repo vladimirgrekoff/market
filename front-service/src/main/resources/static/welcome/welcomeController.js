@@ -1,12 +1,39 @@
 app.controller("welcomeController", function($rootScope, $scope, $http, $location, $localStorage, $templateCache) {
 //    const contextPath = 'http://localhost:8189/market-core/api/v1';
     const contextPath = 'http://localhost:5555/core/api/v1';
+    const contextPathCart = 'http://localhost:5555/cart/api/v1/cart';
 
     $scope.$on('routeChangeStart', function(event, next, current) {
         if (typeof(current) != 'undefined') {
             $templateCache.remove(next.templateUrl);
         }
     });
+
+    $rootScope.run = function() {
+        if ($localStorage.springWebUser) {
+            try {
+                let jwt = $localStorage.springWebUser.token;
+                let payload = JSON.parse(atob(jwt.split('.')[1]));
+                let currentTime = parseInt(new Date().getTime() / 1000);
+                if (currentTime > payload.exp) {
+                    console.log("Token is expired!!!");////////////////////////////////////////////
+                    delete $localStorage.springWebUser;
+                    $http.defaults.headers.common.Authorization = '';
+                }
+            } catch (e) {
+            }
+
+            if ($localStorage.springWebUser) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.springWebUser.token;
+            }
+        }
+        if (!$localStorage.marketGuestCartId) {
+            $http.get('http://localhost:5555/cart/api/v1/cart/generate_id')
+                .then(function (response) {
+                    $localStorage.marketGuestCartId = response.data.value;
+                });
+        }
+    };
 
     $scope.defaultNumber = 5;
 
@@ -36,6 +63,15 @@ app.controller("welcomeController", function($rootScope, $scope, $http, $locatio
         return limit;
     };
 
+
+    $scope.showLoginPage = function () {
+        $location.path('login');
+    };
+
+    $scope.showRegistrationPage = function () {
+        $location.path('registration');
+    };
+
     $scope.loadPageProducts = function (offset, first, last) {
         limit = $scope.checkLimit();
         $http({
@@ -62,14 +98,40 @@ app.controller("welcomeController", function($rootScope, $scope, $http, $locatio
             });
     };
 
-
-    $scope.showLoginPage = function () {
-        $location.path('login');
+    $scope.loadCart = function () {
+//            $http.get(contextPathCart + '/cart')
+            $http.get(contextPathCart + '/' + $localStorage.marketGuestCartId)
+                .then(function (response) {
+                $scope.cart = response.data;
+        });
     };
 
-    $scope.showRegistrationPage = function () {
-        $location.path('registration');
+
+    $scope.addProductToCart = function (productId) {
+        $http.get(contextPathCart + '/' + $localStorage.marketGuestCartId + '/add/' + productId)
+            .then(function (response) {
+                productId = null;
+                $scope.loadCart();
+            });
     };
+
+    $scope.deleteProductFromCart = function (productId) {
+        $http.delete(contextPathCart + '/' + $localStorage.marketGuestCartId + '/delete/' + productId)
+            .then(function (response) {
+                $scope.loadCart();
+            });
+    };
+
+    $scope.clearCart = function () {
+        $http.delete(contextPathCart + '/' + $localStorage.marketGuestCartId + '/clear')
+            .then(function (response) {
+                $scope.loadCart();
+            });
+    };
+
+    $scope.guestCreateOrder = function () {
+        alert('Для оформления заказа необходимо войти в учетную запись');
+    }
 
 
     $scope.tryLogout = function() {
@@ -81,7 +143,7 @@ app.controller("welcomeController", function($rootScope, $scope, $http, $locatio
     };
 
 
-
+    $rootScope.run();
     $scope.loadPageProducts();
 
 });

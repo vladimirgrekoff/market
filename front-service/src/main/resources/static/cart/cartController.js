@@ -2,7 +2,7 @@ app.controller("cartController", function($rootScope, $scope, $http, $location, 
 //    const contextPathCore = 'http://localhost:8189/market-core/api/v1';
 //    const contextPathCart = 'http://localhost:8190/market-cart/api/v1';
     const contextPathCore = 'http://localhost:5555/core/api/v1';
-    const contextPathCart = 'http://localhost:5555/cart/api/v1';
+    const contextPathCart = 'http://localhost:5555/cart/api/v1/cart';
 
 
 
@@ -81,7 +81,8 @@ app.controller("cartController", function($rootScope, $scope, $http, $location, 
 
 
     $scope.loadCart = function () {
-            $http.get(contextPathCart + '/cart')
+//            $http.get(contextPathCart + '/cart')
+            $http.get(contextPathCart + '/' + $localStorage.marketGuestCartId)
                 .then(function (response) {
                 $scope.cart = response.data;
         });
@@ -89,7 +90,7 @@ app.controller("cartController", function($rootScope, $scope, $http, $location, 
 
 
     $scope.addProductToCart = function (productId) {
-        $http.get(contextPathCart + '/cart/add/' + productId)
+        $http.get(contextPathCart + '/' + $localStorage.marketGuestCartId + '/add/' + productId)
             .then(function (response) {
                 productId = null;
                 $scope.loadCart();
@@ -97,14 +98,14 @@ app.controller("cartController", function($rootScope, $scope, $http, $location, 
     };
 
     $scope.deleteProductFromCart = function (productId) {
-        $http.delete(contextPathCart + '/cart/delete/' + productId)
+        $http.delete(contextPathCart + '/' + $localStorage.marketGuestCartId + '/delete/' + productId)
             .then(function (response) {
                 $scope.loadCart();
             });
     };
 
     $scope.clearCart = function () {
-        $http.delete(contextPathCart + '/cart/clear')
+        $http.delete(contextPathCart + '/' + $localStorage.marketGuestCartId + '/clear')
             .then(function (response) {
                 $scope.loadCart();
             });

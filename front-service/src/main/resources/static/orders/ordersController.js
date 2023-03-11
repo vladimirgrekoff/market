@@ -11,6 +11,10 @@ angular.module('market').controller('ordersController', function ($rootScope, $s
         $http.defaults.headers.common.Authorization;
     };
 
+    $scope.showCartPage = function () {
+        $location.path('cart');
+    };
+
     $scope.showNavigationPage = function () {
         $location.path('navigation');
     };
