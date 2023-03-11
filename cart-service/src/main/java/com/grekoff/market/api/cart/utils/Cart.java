@@ -6,7 +6,6 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -20,8 +19,9 @@ public class Cart {
     }
 
     public List<CartItem> getItems() {
-        return Collections.unmodifiableList(items);
+        return items;
     }
+
 
     public void add(ProductDto p) {
         if(items != null) {
@@ -65,7 +65,7 @@ public class Cart {
         totalPrice = BigDecimal.ZERO;
     }
 
-    private void recalculate() {
+    public void recalculate() {
         totalPrice = BigDecimal.ZERO;
         items.forEach(i -> totalPrice = totalPrice.add(i.getPrice()));
     }

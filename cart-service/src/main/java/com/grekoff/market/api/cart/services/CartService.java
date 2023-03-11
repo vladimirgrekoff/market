@@ -48,14 +48,17 @@ public class CartService {
         return (Cart) redisTemplate.opsForValue().get(cartId);
     }
     public Cart addGuestCartToCurrentCart(String cartId, String guestCartId) {
-        if(!Objects.equals(cartId, guestCartId)){
-            Cart guestCart = (Cart) redisTemplate.opsForValue().get(guestCartId);
-            Cart currentCart = (Cart) redisTemplate.opsForValue().get(cartId);
+        Cart guestCart;
+        Cart currentCart = getCurrentCart(cartId);
+        if (redisTemplate.hasKey(guestCartId)) {
+            guestCart = (Cart) redisTemplate.opsForValue().get(guestCartId);
             List<CartItem> items = guestCart.getItems();
-            for (CartItem i : items){
+            for (CartItem i : items) {
                 currentCart.getItems().add(i);
             }
             redisTemplate.opsForValue().set(cartId, currentCart);
+            execute(cartId, Cart::recalculate);
+            clearCart(guestCartId);
         }
         return (Cart) redisTemplate.opsForValue().get(cartId);
     }

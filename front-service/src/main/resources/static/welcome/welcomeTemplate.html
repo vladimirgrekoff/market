@@ -97,7 +97,8 @@
     <button class="btn btn-success" ng-click="showPreOrder = !showPreOrder">Сделать предварительный заказ</button>
     </div>
     <div align="center"  ng-show="showPreOrder">
-        <button class="btn btn-warning" ng-click="showPreOrder = !showPreOrder">Отказаться от выбора</button>
+<!--        <button class="btn btn-warning" ng-click="showPreOrder = !showPreOrder" n>Отказаться от выбора</button>-->
+        <button class="btn btn-warning" ng-click="showPreOrder = !showPreOrder;clearCart()">Отказаться от выбора</button>
     </div>
     <p>&nbsp;</p>
     <div ng-show="showPreOrder">

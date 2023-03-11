@@ -64,7 +64,7 @@ public class CartController {
 //        cartService.clearCart();
 //    }
 
-    @GetMapping("/{guestCartId}/clear")
+    @DeleteMapping("/{guestCartId}/clear")
     public void deleteAllProducts(@RequestHeader(required = false) String username, @PathVariable String guestCartId) {
         String currentCartId = cartService.selectCartId(username, guestCartId);
         cartService.clearCart(currentCartId);

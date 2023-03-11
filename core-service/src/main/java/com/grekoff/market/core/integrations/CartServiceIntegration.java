@@ -13,7 +13,7 @@ public class CartServiceIntegration {
     public CartDto getCurrentCart(String username) {
 //                .uri("http://localhost:8190/market-cart/api/v1/cart")
         return cartServiceWebClient.get()
-                .uri("/api/v1/cart/guestCartId")
+                .uri("/api/v1/cart/currentCartId")
                 .header("username", username)
                 .retrieve()
                 .bodyToMono(CartDto.class)
@@ -22,7 +22,7 @@ public class CartServiceIntegration {
 
     public void clear(String username) {
         cartServiceWebClient.delete()
-                .uri("/api/v1/cart/guestCartId/clear")
+                .uri("/api/v1/cart/currentCartId/clear")
                 .header("username", username)
                 .retrieve()
                 .toBodilessEntity()
