@@ -29,14 +29,14 @@
                     <td width="35%" colspan="2">
                         <button type="button" class="btn btn-outline-info btn-sm" style="width: 100%;" ng-click="showNavigationPage()">Страница навигации</button>
                     </td>
-                    <td width="35%">
+                    <td width="35%" colspan="2">
 <!--                        <button type="button" class="btn btn-outline-danger btn-sm" style="width: 100%;" onclick="location.href = 'logout'">Выход</button>-->
                         <button type="button" class="btn btn-outline-danger btn-sm" style="width: 100%;" ng-click="tryLogout()">Выход</button>
                     </td>
                 </tr>
                 <tr>
+                    <td width="30%" colspan="2"><b>На странице:</b></td>
                     <form class="form-floating input-group">
-                        <td colspan="2"><b>На странице:</b></td>
                         <td width="25%" align="right">
                             <input class="form-control" type="number" ng-model="numberProduct" id="numberOnPage" name="numberOnPage" placeholder={{applyValue}} required/>
                         </td>
@@ -44,16 +44,23 @@
                             <button class="btn btn-outline-primary" ng-click="applyNumberProducts()">OK</button>
                         </td>
                     </form>
-                    <td align="right">
+                    <td width="35%" align="right" colspan="2">
                         <button class="btn btn-outline-primary" ng-click="loadAllProducts()">показать все</button>
                     </td>
                 </tr>
                 <tr>
-                    <td><b>Страницы:</b></td>
-                    <td colspan="4" align="right">
-                        <button class="btn btn-outline-primary" ng-click="loadPageProducts(0, true, false)">первая</button>
+                    <td colspan="2"><b>Страницы:</b></td>
+                    </td>
+                    <td width="25%" align="left">
+                        <button class="btn btn-outline-primary" ng-click="loadPageProducts(0, true, false)">&nbsp;&nbsp;&nbsp;первая&nbsp;&nbsp;&nbsp;</button>
+                    </td>
+                    <td width="10%" align="right">
                         <button class="btn btn-outline-primary" ng-click="loadPageProducts(-1, false, false)">&lt;&lt;</button>
+                    </td>
+                    <td width="10%" align="left">
                         <button class="btn btn-outline-primary" ng-click="loadPageProducts(1, false, false)">&gt;&gt;</button>
+                    </td>
+                    <td width="25%" align="right">
                         <button class="btn btn-outline-primary" ng-click="loadPageProducts(0, false, true)">последняя</button>
                     </td>
                 </tr>
