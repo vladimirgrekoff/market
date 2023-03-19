@@ -1,12 +1,19 @@
 package com.grekoff.market.api;
 
-import java.math.BigDecimal;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.math.BigDecimal;
+@Schema(description = "Продукт в заказе")
 public class OrderItemDto {
+    @Schema(description = "ID продукта",  requiredMode = Schema.RequiredMode.AUTO, example = "1")
     private Long productId;
+    @Schema(description = "Наименование продукта",  requiredMode = Schema.RequiredMode.REQUIRED, maxLength = 255, minLength = 3, example = "Хлеб")
     private String productTitle;
+    @Schema(description = "Количество единиц в заказе",  requiredMode = Schema.RequiredMode.REQUIRED, example = "2")
     private int quantity;
+    @Schema(description = "Цена единицы продукта",  requiredMode = Schema.RequiredMode.REQUIRED, example = "40.00")
     private BigDecimal pricePerProduct;
+    @Schema(description = "Общая стоимость продукта в корзине",  requiredMode = Schema.RequiredMode.REQUIRED, example = "80.00")
     private BigDecimal price;
 
     public Long getProductId() {

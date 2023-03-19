@@ -65,8 +65,19 @@ public class CartService {
 
     public void addToCart(String cartId, Long productId) {
         execute(cartId, cart -> {
-            ProductDto p = productsServiceIntegration.findById(productId);
-            cart.add(p);
+            if (cart.isPresentInCart(productId)) {
+                List<CartItem> items = cart.getItems();
+                for (CartItem i : items) {
+                    if (i.getProductId() == productId) {
+                        i.incrementQuantity();
+                    }
+                }
+                cart.setItems(items);
+                cart.recalculate();
+            } else {
+                ProductDto p = productsServiceIntegration.findById(productId);
+                cart.add(p);
+            }
         });
     }
 

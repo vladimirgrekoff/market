@@ -8,6 +8,7 @@ spring:
     url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
     username: sa
     password:
+
   jpa:
     show-sql: true
     properties:
@@ -16,11 +17,13 @@ spring:
         ddl-auto: none
         temp:
           use_jdbc_metadata_defaults: false
+
   h2:
     console:
       enabled: true
       settings:
         web-allow-others: false
+
 integrations:
   cart-service:
     url: http://localhost:8190/market-cart/
@@ -33,3 +36,5 @@ integrations:
     connect-timeout: 5000
     read-timeout: 10000
     write-timeout: 5000
+
+

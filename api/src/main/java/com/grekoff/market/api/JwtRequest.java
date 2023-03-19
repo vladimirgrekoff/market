@@ -1,8 +1,12 @@
 package com.grekoff.market.api;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Запрос токена")
 public class JwtRequest {
+    @Schema(description = "Имя пользователя в сети", requiredMode = Schema.RequiredMode.REQUIRED,  example = "user")
     private String username;
+    @Schema(description = "Пароль пользователя", requiredMode = Schema.RequiredMode.REQUIRED,  example = "100")
     private String password;
 
     public String getUsername() {

@@ -1,7 +1,11 @@
 package com.grekoff.market.api;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+@Schema(description = "Модель роли пользователя")
 public class RoleDto {
+    @Schema(description = "ID роли",   example = "1")
     private Long id;
+    @Schema(description = "Имя роли",  example = "ROLE_USER")
     private String name;
 
 

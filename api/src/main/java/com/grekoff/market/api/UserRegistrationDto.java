@@ -1,12 +1,21 @@
 package com.grekoff.market.api;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Модель регистрационных данных пользователя")
 public class UserRegistrationDto {
 
+    @Schema(description = "Имя пользователя", requiredMode = Schema.RequiredMode.REQUIRED,  example = "Иван")
     private String firstname;
+    @Schema(description = "Фамилия пользователя", requiredMode = Schema.RequiredMode.REQUIRED,  example = "Иванов")
     private String lastname;
+    @Schema(description = "Имя пользователя в сети", requiredMode = Schema.RequiredMode.REQUIRED,  example = "user")
     private String username;
+    @Schema(description = "Адрес электронной почты пользователя", requiredMode = Schema.RequiredMode.REQUIRED,  example = "user@gmail.com")
     private String email;
+    @Schema(description = "Пароль пользователя", requiredMode = Schema.RequiredMode.REQUIRED,  example = "100")
     private String password;
+    @Schema(description = "Подтверждение пароля пользователя", requiredMode = Schema.RequiredMode.REQUIRED,  example = "100")
     private String confirmPassword;
 
     public UserRegistrationDto() {

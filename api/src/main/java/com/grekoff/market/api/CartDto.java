@@ -2,12 +2,16 @@ package com.grekoff.market.api;
 
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 import java.util.List;
 
-
+@Schema(description = "Модель корзины заказов")
 public class CartDto {
+    @Schema(description = "Список продуктов в корзине")
     private List<CartItemDto> items;
+    @Schema(description = "Общая стоимость корзины", example = "1000")
     private BigDecimal totalPrice;
 
     public List<CartItemDto> getItems() {

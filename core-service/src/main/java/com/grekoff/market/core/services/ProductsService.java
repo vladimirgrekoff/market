@@ -27,9 +27,7 @@ public class ProductsService {
 
     public int page = 0;
 
-//    public List<Product> findAll(){
-//        return productsRepository.findAll();
-//    }
+
     public List<ProductDto> findAll() {
         List<ProductDto> productDtoList = new ArrayList<>();
         List<Product> productList = productsRepository.findAll();

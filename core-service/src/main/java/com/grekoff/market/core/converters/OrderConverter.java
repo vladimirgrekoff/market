@@ -13,6 +13,6 @@ public class OrderConverter {
     private final OrderItemConverter orderItemConverter;
 
     public OrderDto entityToDto(Order o) {
-        return new OrderDto(o.getId(), o.getOrderItems().stream().map(orderItemConverter::entityToDto).collect(Collectors.toList()), o.getTotalPrice());
+        return new OrderDto(o.getId(), o.getOrderItems().stream().map(orderItemConverter::entityToDto).collect(Collectors.toList()), o.getTotalPrice(), o.getCreatedAt());
     }
 }

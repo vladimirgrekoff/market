@@ -5,6 +5,7 @@ import com.grekoff.market.api.UserDto;
 import com.grekoff.market.api.UserRegistrationDto;
 import com.grekoff.market.auth.converters.RoleConverter;
 import com.grekoff.market.auth.entities.User;
+import com.grekoff.market.auth.exceptions.AppError;
 import com.grekoff.market.auth.exceptions.ResourceNotFoundException;
 import com.grekoff.market.auth.exceptions.EmailExistsException;
 import com.grekoff.market.auth.exceptions.UserAlreadyExistException;
@@ -13,6 +14,8 @@ import com.grekoff.market.auth.repositories.RoleRepository;
 import com.grekoff.market.auth.converters.UserConverter;
 import com.grekoff.market.auth.entities.Role;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -54,13 +57,13 @@ public class UsersService implements UserDetailsService {
     }
 
     public Optional<User> findByUsername(String username) {
-        return usersRepository.findByUsername(username);
+        return Optional.ofNullable(usersRepository.findByUsername(username).orElseThrow(() -> new ResourceNotFoundException("Пользователь отсутствует в списке")));
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format("User '%s' not found", username)));
+        User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format("Пользователь '%s' не найден", username)));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
@@ -74,9 +77,11 @@ public class UsersService implements UserDetailsService {
 
     @Transactional
     public User registerNewUserAccount(UserRegistrationDto userRegistrationDto) throws EmailExistsException, UserAlreadyExistException {
+        if (userNameExist(userRegistrationDto.getUsername())){
+            throw new UserAlreadyExistException("Пользователь с таким именем уже существует");
+        }
         if (emailExists(userRegistrationDto.getEmail())) {
-            throw new UserAlreadyExistException(
-                    "Существует учетная запись с этим адресом электронной почты:" + userRegistrationDto.getEmail());
+            throw new EmailExistsException("Существует учетная запись с этим адресом электронной почты: " + userRegistrationDto.getEmail());
         }
         User user = new User();
         user.setFirstname(userRegistrationDto.getFirstname());
@@ -97,8 +102,18 @@ public class UsersService implements UserDetailsService {
         return usersRepository.findByEmail(email).isPresent();
     }
 
+    private boolean userNameExist(String username) {
+        return usersRepository.findByUsername(username).isPresent();
+    }
+
     @Transactional
-    public User save(User user) {
+    public User save(User user) throws UserAlreadyExistException, EmailExistsException {
+        if (userNameExist(user.getUsername())) {
+            throw new UserAlreadyExistException("Пользователь с таким именем уже существует");
+        }
+        if (emailExists(user.getEmail())) {
+            throw new EmailExistsException("Существует учетная запись с этим адресом электронной почты");
+        }
         List<Role> roles = user.getRoles().stream().toList();
         for(Role role : roles){
             if(role.getId() == null) {
