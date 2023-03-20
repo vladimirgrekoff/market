@@ -1,11 +1,10 @@
 package com.grekoff.market.auth.services;
 
 
-import com.grekoff.market.api.UserDto;
-import com.grekoff.market.api.UserRegistrationDto;
+import com.grekoff.market.api.auth.UserDto;
+import com.grekoff.market.api.auth.UserRegistrationDto;
 import com.grekoff.market.auth.converters.RoleConverter;
 import com.grekoff.market.auth.entities.User;
-import com.grekoff.market.auth.exceptions.AppError;
 import com.grekoff.market.auth.exceptions.ResourceNotFoundException;
 import com.grekoff.market.auth.exceptions.EmailExistsException;
 import com.grekoff.market.auth.exceptions.UserAlreadyExistException;
@@ -14,8 +13,6 @@ import com.grekoff.market.auth.repositories.RoleRepository;
 import com.grekoff.market.auth.converters.UserConverter;
 import com.grekoff.market.auth.entities.Role;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,9 +26,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
-import java.util.*;
 import java.util.stream.Collectors;
 
 @Service

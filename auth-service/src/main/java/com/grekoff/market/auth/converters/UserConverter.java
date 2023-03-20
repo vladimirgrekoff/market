@@ -1,7 +1,7 @@
 package com.grekoff.market.auth.converters;
 
 
-import com.grekoff.market.api.UserDto;
+import com.grekoff.market.api.auth.UserDto;
 import com.grekoff.market.auth.entities.User;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.grekoff.market.api;
+package com.grekoff.market.auth.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

@@ -1,17 +1,13 @@
 package com.grekoff.market.api.cart.services;
 
-import com.grekoff.market.api.ProductDto;
+import com.grekoff.market.api.core.ProductDto;
 import com.grekoff.market.api.cart.integrations.ProductsServiceIntegration;
 import com.grekoff.market.api.cart.utils.Cart;
 import com.grekoff.market.api.cart.utils.CartItem;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.PostConstruct;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;

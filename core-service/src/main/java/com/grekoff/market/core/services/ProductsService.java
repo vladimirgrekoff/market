@@ -1,7 +1,7 @@
 package com.grekoff.market.core.services;
 
 
-import com.grekoff.market.api.ProductDto;
+import com.grekoff.market.api.core.ProductDto;
 import com.grekoff.market.core.converters.ProductConverter;
 import com.grekoff.market.core.entities.Product;
 import com.grekoff.market.core.exceptions.ResourceNotFoundException;

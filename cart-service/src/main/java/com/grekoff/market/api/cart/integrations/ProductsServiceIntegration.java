@@ -1,6 +1,6 @@
 package com.grekoff.market.api.cart.integrations;
 
-import com.grekoff.market.api.ProductDto;
+import com.grekoff.market.api.core.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

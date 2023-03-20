@@ -1,4 +1,4 @@
-package com.grekoff.market.api;
+package com.grekoff.market.api.auth;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Модель роли пользователя")

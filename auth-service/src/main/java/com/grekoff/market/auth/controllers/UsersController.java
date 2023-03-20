@@ -1,8 +1,7 @@
 package com.grekoff.market.auth.controllers;
 
-import com.grekoff.market.api.ProductDto;
 import com.grekoff.market.auth.converters.UserConverter;
-import com.grekoff.market.api.UserDto;
+import com.grekoff.market.api.auth.UserDto;
 import com.grekoff.market.auth.entities.User;
 import com.grekoff.market.auth.exceptions.AppError;
 import com.grekoff.market.auth.exceptions.EmailExistsException;

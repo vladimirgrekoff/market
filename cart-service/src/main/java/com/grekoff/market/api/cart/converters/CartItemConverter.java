@@ -1,7 +1,7 @@
 package com.grekoff.market.api.cart.converters;
 
 import com.grekoff.market.api.cart.utils.CartItem;
-import com.grekoff.market.api.CartItemDto;
+import com.grekoff.market.api.carts.CartItemDto;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,6 +1,6 @@
 package com.grekoff.market.auth.validators;
 
-import com.grekoff.market.api.UserDto;
+import com.grekoff.market.api.auth.UserDto;
 import com.grekoff.market.auth.exceptions.ValidationException;
 import org.springframework.stereotype.Component;
 

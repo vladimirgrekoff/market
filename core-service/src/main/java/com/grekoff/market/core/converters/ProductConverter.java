@@ -1,6 +1,6 @@
 package com.grekoff.market.core.converters;
 
-import com.grekoff.market.api.ProductDto;
+import com.grekoff.market.api.core.ProductDto;
 import com.grekoff.market.core.entities.Product;
 import org.springframework.stereotype.Component;
 

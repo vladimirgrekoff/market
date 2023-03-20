@@ -1,7 +1,7 @@
 package com.grekoff.market.api.cart.utils;
 
 
-import com.grekoff.market.api.ProductDto;
+import com.grekoff.market.api.core.ProductDto;
 import lombok.Data;
 
 import java.math.BigDecimal;

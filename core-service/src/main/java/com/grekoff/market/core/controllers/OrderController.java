@@ -1,7 +1,5 @@
 package com.grekoff.market.core.controllers;
 
-import com.grekoff.market.api.CartDto;
-import com.grekoff.market.api.ProductDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -14,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.grekoff.market.core.converters.OrderConverter;
 import com.grekoff.market.core.services.OrdersService;
-import com.grekoff.market.api.OrderDto;
+import com.grekoff.market.api.core.OrderDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

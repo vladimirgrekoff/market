@@ -1,15 +1,17 @@
-package com.grekoff.market.api;
+package com.grekoff.market.api.carts;
+
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
-@Schema(description = "Продукт в заказе")
-public class OrderItemDto {
+
+@Schema(description = "Продукт в корзине заказов")
+public class CartItemDto {
     @Schema(description = "ID продукта",  requiredMode = Schema.RequiredMode.AUTO, example = "1")
     private Long productId;
     @Schema(description = "Наименование продукта",  requiredMode = Schema.RequiredMode.REQUIRED, maxLength = 255, minLength = 3, example = "Хлеб")
     private String productTitle;
-    @Schema(description = "Количество единиц в заказе",  requiredMode = Schema.RequiredMode.REQUIRED, example = "2")
+    @Schema(description = "Количество единиц в корзине",  requiredMode = Schema.RequiredMode.REQUIRED, example = "2")
     private int quantity;
     @Schema(description = "Цена единицы продукта",  requiredMode = Schema.RequiredMode.REQUIRED, example = "40.00")
     private BigDecimal pricePerProduct;
@@ -56,10 +58,10 @@ public class OrderItemDto {
         this.price = price;
     }
 
-    public OrderItemDto() {
+    public CartItemDto() {
     }
 
-    public OrderItemDto(Long productId, String productTitle, int quantity, BigDecimal pricePerProduct, BigDecimal price) {
+    public CartItemDto(Long productId, String productTitle, int quantity, BigDecimal pricePerProduct, BigDecimal price) {
         this.productId = productId;
         this.productTitle = productTitle;
         this.quantity = quantity;

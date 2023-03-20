@@ -1,7 +1,7 @@
 package com.grekoff.market.core.services;
 
-import com.grekoff.market.api.CartDto;
-import com.grekoff.market.api.UserDto;
+import com.grekoff.market.api.carts.CartDto;
+import com.grekoff.market.api.auth.UserDto;
 import com.grekoff.market.core.entities.Order;
 import com.grekoff.market.core.entities.OrderItem;
 import com.grekoff.market.core.integrations.CartServiceIntegration;

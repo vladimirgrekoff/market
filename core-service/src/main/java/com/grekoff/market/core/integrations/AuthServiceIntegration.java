@@ -1,6 +1,6 @@
 package com.grekoff.market.core.integrations;
 
-import com.grekoff.market.api.UserDto;
+import com.grekoff.market.api.auth.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

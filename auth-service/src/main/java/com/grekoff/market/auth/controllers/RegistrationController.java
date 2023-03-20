@@ -1,6 +1,6 @@
 package com.grekoff.market.auth.controllers;
 
-import com.grekoff.market.api.UserRegistrationDto;
+import com.grekoff.market.api.auth.UserRegistrationDto;
 import com.grekoff.market.auth.entities.User;
 import com.grekoff.market.auth.exceptions.AppError;
 import com.grekoff.market.auth.exceptions.EmailExistsException;
@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

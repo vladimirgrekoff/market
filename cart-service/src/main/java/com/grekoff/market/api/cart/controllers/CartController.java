@@ -1,10 +1,10 @@
 package com.grekoff.market.api.cart.controllers;
 
 
-import com.grekoff.market.api.StringResponse;
+import com.grekoff.market.api.dto.StringResponse;
 import com.grekoff.market.api.cart.converters.CartConverter;
 import com.grekoff.market.api.cart.services.CartService;
-import com.grekoff.market.api.CartDto;
+import com.grekoff.market.api.carts.CartDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 

@@ -1,13 +1,11 @@
 package com.grekoff.market.core.controllers;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.grekoff.market.api.ProductDto;
+import com.grekoff.market.api.core.ProductDto;
 import com.grekoff.market.core.converters.ProductConverter;
 import com.grekoff.market.core.exceptions.AppError;
 import com.grekoff.market.core.exceptions.ResourceNotFoundException;
 import com.grekoff.market.core.services.ProductsService;
 import com.grekoff.market.core.validators.ProductValidator;
-import io.swagger.v3.core.util.Json;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -22,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 //import org.hibernate.mapping.List;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @RestController

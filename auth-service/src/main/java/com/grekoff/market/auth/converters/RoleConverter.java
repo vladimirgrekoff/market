@@ -1,6 +1,6 @@
 package com.grekoff.market.auth.converters;
 
-import com.grekoff.market.api.RoleDto;
+import com.grekoff.market.api.auth.RoleDto;
 import com.grekoff.market.auth.entities.Role;
 import org.springframework.stereotype.Component;
 

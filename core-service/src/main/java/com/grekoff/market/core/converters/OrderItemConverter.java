@@ -1,7 +1,7 @@
 package com.grekoff.market.core.converters;
 
 import org.springframework.stereotype.Component;
-import com.grekoff.market.api.OrderItemDto;
+import com.grekoff.market.api.core.OrderItemDto;
 import com.grekoff.market.core.entities.OrderItem;
 
 @Component

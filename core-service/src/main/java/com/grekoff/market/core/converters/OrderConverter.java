@@ -2,7 +2,7 @@ package com.grekoff.market.core.converters;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import com.grekoff.market.api.OrderDto;
+import com.grekoff.market.api.core.OrderDto;
 import com.grekoff.market.core.entities.Order;
 
 import java.util.stream.Collectors;

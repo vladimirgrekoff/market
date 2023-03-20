@@ -1,8 +1,8 @@
 package com.grekoff.market.auth.controllers;
 
 
-import com.grekoff.market.api.JwtRequest;
-import com.grekoff.market.api.JwtResponse;
+import com.grekoff.market.auth.dto.JwtRequest;
+import com.grekoff.market.auth.dto.JwtResponse;
 import com.grekoff.market.auth.exceptions.AppError;
 import com.grekoff.market.auth.services.UsersService;
 import com.grekoff.market.auth.utils.JwtTokenUtil;
@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +19,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
-import java.util.Base64;
 
 @RestController
 @RequiredArgsConstructor
