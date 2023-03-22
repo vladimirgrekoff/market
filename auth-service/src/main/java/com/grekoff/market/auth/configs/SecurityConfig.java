@@ -27,27 +27,27 @@ public class SecurityConfig {
 //    private final JwtRequestFilter jwtRequestFilter;
 //    private final UsersService usersService;
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-        http    .csrf().disable()
-                .cors().disable()
-                .authorizeHttpRequests()
-//                .requestMatchers("/api/v1/authenticate", "/api/v1/profile/**").permitAll()
-//                .anyRequest().authenticated()
-                .anyRequest().permitAll()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .headers().frameOptions().disable()
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
-
-//        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-        return http.build();
-
-    }
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//
+//        http    .csrf().disable()
+//                .cors().disable()
+//                .authorizeHttpRequests()
+////                .requestMatchers("/api/v1/authenticate", "/api/v1/profile/**").permitAll()
+////                .anyRequest().authenticated()
+//                .anyRequest().permitAll()
+//                .and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .headers().frameOptions().disable()
+//                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+//
+////        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//        return http.build();
+//
+//    }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {

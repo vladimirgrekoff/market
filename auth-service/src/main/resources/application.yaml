@@ -24,3 +24,19 @@ spring:
 jwt:
   secret: e8ukf967unw3r7u33b24bju7vs3k6h0tr5r33ff7fh4d2hh80ty4v96f2vm
   lifetime: 36000000
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: login-market
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8180/realms/SpringBootKeycloak
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/SpringBootKeycloak

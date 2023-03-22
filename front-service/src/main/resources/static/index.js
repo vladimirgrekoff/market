@@ -7,6 +7,12 @@ var app = angular.module('market', ['ngRoute', 'ngStorage'])
     controller:'welcomeController',
     controllerAs:'welcome'
     })
+    .when('/keycloak',
+    {
+    templateUrl:'keycloakTemplate.html',
+    controller:'keycloakController',
+    controllerAs:'keycloak'
+    })
     .when('/login',
     {
     templateUrl:'login/loginTemplate.html',
