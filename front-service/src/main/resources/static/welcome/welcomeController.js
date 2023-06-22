@@ -68,9 +68,6 @@ app.controller("welcomeController", function($rootScope, $scope, $http, $locatio
         $location.path('login');
     };
 
-    $scope.showKeycloakLoginPage = function () {
-        $location.path('keycloak');
-    };
 
     $scope.showRegistrationPage = function () {
         $location.path('registration');
